@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <!--<meta http-equiv="Content-Security-Policy" content="default-src *; style-src &apos;self&apos; &apos;unsafe-inline&apos; checkout.stripe.com; script-src &apos;self&apos; &apos;unsafe-inline&apos; &apos;unsafe-eval&apos;">-->
+    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src &apos;self&apos; &apos;unsafe-inline&apos; checkout.stripe.com; script-src * &apos;self&apos; &apos;unsafe-inline&apos; localhost:* amazonaws.com amazonaws.com.cn checkout.stripe.com &apos;unsafe-eval&apos;;">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/general.css" rel="stylesheet">
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+    <script src="lib/ionic-platform-web-client/dist/ionic.io.bundle.min.js"></script>
+    <!-- Authentication -->
+    <script src="lib/satellizer/satellizer.js"></script>
+    <script src="lib/ionic-toast/dist/ionic-toast.bundle.min.js"></script>
+    <script src="lib/angular-stripe-checkout/angular-stripe-checkout.js"></script>
+    <script src="lib/angular-cookies/angular-cookies.js"></script>
+    <script src="lib/angular-ui-scroll/dist/ui-scroll.js"></script>
+    <script src="lib/angular-ui-scroll/dist/ui-scroll-jqlite.js"></script>
+    <script src="lib/angular-translate/angular-translate.js"></script>
+
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <!-- Cordova is bootstrapped by ionic-platform-web-client, uncomment this if you remove ionic-platform-web-client... -->
+    <!--<script src="cordova.js"></script>-->
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+<link href="css/ionic.app.css" rel="stylesheet">
+-->
+    <!-- Modules -->
+    <script src="js/modules/controllers.splitted.js"></script>
+    <script src="js/modules/services.splitted.js"></script>
+    <!-- Splitted controllers -->
+    <script src="js/controllers/tabsCtrl.js"></script>
+    <script src="js/controllers/criteriasCtrl.js"></script>
+    <script src="js/controllers/detailViewCtrl.js"></script>
+    <script src="js/controllers/infoCtrl.js"></script>
+    <script src="js/controllers/loginCtrl.js"></script>
+    <script src="js/controllers/navCtrl.js"></script>
+    <script src="js/controllers/premiumCtrl.js"></script>
+    <script src="js/controllers/resultsCtrl.js"></script>
+    <script src="js/controllers/settingsCtrl.js"></script>
+    <script src="js/controllers/signupCtrl.js"></script>
+    <script src="js/controllers/welcomeCtrl.js"></script>
+    <!-- Splitted services -->
+    <script src="js/services/cars.factory.js"></script>
+    <script src="js/services/criterias.factory.js"></script>
+    <script src="js/services/payments.factory.js"></script>
+    <script src="js/services/users.factory.js"></script>
+
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/routes.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/directives.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/translations.js"></script>
+
+
+
+    <!-- Only required for Tab projects w/ pages in multiple tabs
+<script src="lib/ionicuirouter/ionicUIRouter.js"></script>
+-->
+
+  </head>
+  <body ng-app="app" ng-controller="tabsCtrl" animation="slide-left-right-ios7">
+    <div>
+      <ion-side-menus enable-menu-with-back-views="false" ng-controller="navCtrl" data-componentid="side-menu21">
+        <ion-side-menu-content>
+          <ion-nav-bar class="bar bar-header has-tabs-top bar-balanced">
+            <ion-nav-back-button></ion-nav-back-button>
+            <ion-nav-buttons side="left">
+              <button ng-if="isAuthenticated()" class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+            </ion-nav-buttons>
+          </ion-nav-bar>
+          <ion-nav-view></ion-nav-view>
+        </ion-side-menu-content>
+        <ion-side-menu side="left" id="side-menu21">
+          <ion-header-bar class="bar-stable">
+            <div class="title">Menu</div>
+          </ion-header-bar>
+          <ion-content padding="false" class="side-menu-left has-header">
+            <ion-list data-componentid="list6">
+              <ion-item class="item-thumbnail-left" data-componentid="list-item-thumbnail1" style="background-color: #64BB64">
+                <img ng-src="http://i.imgur.com/vr1Vb4T.png">
+                <h2>{{currentUser.displayName}}</h2>
+                <p class="sidenav-mail">{{currentUser.email}}</p>
+              </ion-item>
+              <label class="item item-input" data-componentid="search2" style="display: none;">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="search" placeholder="">
+              </label>
+              <ion-item ui-sref="tabsController.results" menu-close="" data-componentid="list-item11">Home</ion-item>
+              <ion-item ui-sref="info" menu-close="">Information</ion-item>
+              <ion-item ui-sref="premium" menu-close="" data-componentid="list-item12">Premium</ion-item>
+              <ion-item ui-sref="settings" menu-close="" data-componentid="list-item16" style="display:none;">{{ &apos;SETTINGS&apos; | translate }}</ion-item>
+            </ion-list>
+          </ion-content>
+          <ion-footer-bar class="p0">
+            <div class="button-bar">
+              <a ui-sref="login" menu-close="" id="menu-button23" class="button button-block button-light" data-componentid="button23">{{ &apos;LOGOUT&apos; | translate}}</a>
+            </div>
+          </ion-footer-bar>
+        </ion-side-menu>
+      </ion-side-menus>
+    </div>
+  </body>
+</html>
